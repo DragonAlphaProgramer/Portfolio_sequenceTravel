@@ -19,16 +19,16 @@ class Karta {
 
     enum Specjalne {
         Brak, Dzikun, rozbojnik
-    };
+    }
 
     enum Kolor {
         Kier, Karo, Trefl, Pik
-    };
+    }
 
     enum Nominal {
         Dwojka, Trojka, Czworka, Piatka, Szostka, Siodemka, Osemka, Dziewiatka,
         Dziesiatka, Walet, Dama, Krol, As
-    };
+    }
     int[] kordy = new int[2];
 
     Karta(int pozycjaX, int pozycjaY, int nominałwe, int kolorwe, int specjalwe, ImageIcon imageIcon) {

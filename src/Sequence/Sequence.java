@@ -893,12 +893,6 @@ public class Sequence extends javax.swing.JFrame {
         Collections.shuffle(talia);
         Collections.shuffle(talia);
         Collections.shuffle(talia);
-
-        for (Karta k : talia) {
-            System.out.println(k.toString() + " " + indeks);
-            indeks++;
-        }
-        System.out.println("");
         Object[] opcje = {"2 graczy", "3 graczy", "2 drużyny po 2", "3 drużyny po 2"};
         int opcja = JOptionPane.showOptionDialog(rootPane, "Ilu ma byc graczy", "Nowa gra",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcje, null);
@@ -1295,9 +1289,7 @@ public class Sequence extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void pokaz_karty(int biezacy_gracz) {
-        for (Karta k : gracze.get(biezacy_gracz).getReka()) {
-            System.out.println(k);
-        }
+        
         Reka6.setVisible(reka > 5);
         Reka7.setVisible(reka > 5 && reka == 7);
         Reka1.setIcon((gracze.get(biezacy_gracz).getReka().size()>=1)?(new ImageIcon(((gracze.get(biezacy_gracz).getReka().get(0).getSymbol()).getImage().getScaledInstance(86, 120, java.awt.Image.SCALE_SMOOTH)))):null);
@@ -1381,7 +1373,7 @@ public class Sequence extends javax.swing.JFrame {
                     int sekewncje = 0;
                     sekewncje = gracze.get(biezacy_gracz).sekwencja(tablica);
                     
-                    if (sekewncje == wygrana) {
+                    if (sekewncje >= wygrana) {
                         JOptionPane.showMessageDialog(rootPane, "Koniec gry\n"
                                 + "wygrała rużyna numer " + gracze.get(biezacy_gracz).getDruzyna());
                         kres=true;
@@ -1408,12 +1400,12 @@ public class Sequence extends javax.swing.JFrame {
                 break;
             case Dzikun:
                 akcja = 2;
-                JOptionPane.showMessageDialog(rootPane, "Ten walet ma zabójczy wzrok i może zająć dowolne wolne miejsce\n"
+                JOptionPane.showMessageDialog(rootPane, "Ten walet ma zabójczy wzrok.\nMoże zająć dowolne wolne miejsce\n"
                         + "Kilknij na tablicy kartę, gdzie chcesz dołożyc żeton");
                 break;
             case rozbojnik:
                 akcja = 1;
-                JOptionPane.showMessageDialog(rootPane, "Walety z jednym okiem mogą skasować dowolny niewchodzący w sekwencje żeton\n"
+                JOptionPane.showMessageDialog(rootPane, "Ten walet ma wzrok snajpera\nMoże skasować dowolny niewchodzący w sekwencje żeton\n"
                         + "Kilknij na tablicy kartę, gdzie chcesz usunąć żeton rywala");
                 break;
         }
@@ -1432,7 +1424,7 @@ public class Sequence extends javax.swing.JFrame {
                     styl();
                     int sekewncje = 0;
                     sekewncje = gracze.get(biezacy_gracz).sekwencja(tablica);
-                    if (sekewncje == wygrana) {
+                    if (sekewncje >= wygrana) {
                         JOptionPane.showMessageDialog(rootPane, "Koniec gry\n"
                                 + "wygrała rużyna numer " + gracze.get(biezacy_gracz).getDruzyna());
                         kres=true;
@@ -1506,13 +1498,13 @@ public class Sequence extends javax.swing.JFrame {
                         dopasuj_przycisk(i, j).setBorder(null);
                         break;
                     case 1:
-                        dopasuj_przycisk(i, j).setBorder(new LineBorder(gracze.get(0).getKolor(), 4));
+                        dopasuj_przycisk(i, j).setBorder(new LineBorder(gracze.get(0).getKolor(), 6));
                         break;
                     case 2:
-                        dopasuj_przycisk(i, j).setBorder(new LineBorder(gracze.get(1).getKolor(), 4));
+                        dopasuj_przycisk(i, j).setBorder(new LineBorder(gracze.get(1).getKolor(), 6));
                         break;
                     case 3:
-                        dopasuj_przycisk(i, j).setBorder(new LineBorder(gracze.get(2).getKolor(), 4));
+                        dopasuj_przycisk(i, j).setBorder(new LineBorder(gracze.get(2).getKolor(), 6));
                         break;
                 }
             }
